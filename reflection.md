@@ -2,6 +2,11 @@
 
 ## 1. System Design
 
+Actions a user should be able to perform:
+1. A user can input and manage basic information about themselves and their pet, such as the pet’s name, type, and any relevant care preferences.
+2. A user can create, edit, and prioritize pet care tasks (such as feeding, walks, medication, or grooming), including specifying details like duration and importance.
+3. A user can generate and view a daily care schedule that organizes tasks based on priorities and constraints, along with an explanation of why the schedule was created that way.
+
 **a. Initial design**
 
 - Briefly describe your initial UML design.
