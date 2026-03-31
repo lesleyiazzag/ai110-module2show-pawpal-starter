@@ -40,6 +40,7 @@ I updated the design to include clearer relationships between classes. I added a
 - Describe one tradeoff your scheduler makes.
 - Why is that tradeoff reasonable for this scenario?
 
+One tradeoff the scheduler makes is that it only checks for exact time matches when detecting conflicts between tasks, rather than considering overlapping durations. This means that if two tasks for the same or different pets overlap in time but do not start at the exact same moment, the conflict will not be detected. For example, a task scheduled from 09:00 to 10:00 and another from 09:30 to 10:30 would not trigger a conflict warning. This simplifies the conflict detection logic and reduces computational complexity, but it may lead to scheduling issues in scenarios where overlapping durations are significant.
 ---
 
 ## 3. AI Collaboration
