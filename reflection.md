@@ -12,10 +12,19 @@ Actions a user should be able to perform:
 - Briefly describe your initial UML design.
 - What classes did you include, and what responsibilities did you assign to each?
 
+### a. Initial design
+
+My initial UML design included four main classes: Pet, Owner, Task, and Scheduler. The Pet and Owner classes store basic information and preferences about the user and their pet. The Task class represents individual care activities, including attributes like duration, priority, and deadlines, and handles task-related updates.
+
+The Scheduler class is responsible for managing a list of tasks and generating a daily plan based on priorities and time constraints. It also handles sorting tasks and adjusting the schedule to fit within the owner’s available time.
+
+
 **b. Design changes**
 
 - Did your design change during implementation?
 - If yes, describe at least one change and why you made it.
+
+I updated the design to include clearer relationships between classes. I added a list of pets to the Owner class (Owner → pets: List[Pet]) to support managing multiple pets. I also linked each Task to a specific Pet (Task → pet: Pet) so tasks are associated with the correct animal. Finally, I connected the Scheduler to the Owner (Scheduler → owner: Owner) so scheduling decisions can account for the owner’s availability and preferences. These changes make the system more realistic and better structured.
 
 ---
 
