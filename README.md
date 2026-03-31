@@ -46,3 +46,12 @@ pip install -r requirements.txt
 The scheduling system was enhanced to better handle real-world pet care needs. Tasks are now sorted by their deadlines using proper datetime parsing, ensuring that time-sensitive tasks are prioritized correctly. The system also detects scheduling conflicts when multiple tasks share the same deadline and logs warnings to highlight these issues.
 
 Additionally, the scheduler accounts for time constraints by selecting tasks that fit within the owner’s available time, creating a feasible daily plan. Support for recurring tasks (daily and weekly) was added, allowing completed tasks to automatically generate future instances. Filtering capabilities were also introduced to view tasks by pet or completion status, making task management more flexible and organized.
+
+### Testing PawPal+
+To run the test suite for PawPal+, use the following command:
+
+python -m pytest
+
+The tests verify key system behaviors, including correct task sorting by deadline, proper handling of recurring tasks when marking a task complete, and detection of scheduling conflicts. These tests help ensure that the scheduler behaves as expected under common scenarios.
+
+Confidence Level: ⭐⭐⭐⭐☆ (4/5) — The system is reliable based on the passing tests, with strong coverage of core scheduling functionality. However, additional edge case testing could further improve robustness.

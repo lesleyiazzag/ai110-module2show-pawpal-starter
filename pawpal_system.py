@@ -117,7 +117,7 @@ class Task:
     def mark_complete(self):
         """Mark the task as complete."""
         logging.info(f"Task '{self.name}' for {self.pet.name} has been completed.")
-
+    
     def get_details(self):
         """Return task details."""
         return {
@@ -200,4 +200,25 @@ class Scheduler:
     
     def mark_task_complete(self, task):
         """Mark a task as complete and handle recurring tasks."""
-        task.mark_complete(self)
+        task.mark_complete()
+
+        if task.frequency in ["daily", "weekly"]:
+            from datetime import datetime, timedelta
+
+            current_deadline = datetime.strptime(task.deadline, "%Y-%m-%d %H:%M")
+
+            if task.frequency == "daily":
+                next_deadline = current_deadline + timedelta(days=1)
+            elif task.frequency == "weekly":
+                next_deadline = current_deadline + timedelta(weeks=1)
+
+            new_task = Task(
+                name=task.name,
+                duration=task.duration,
+                priority=task.priority,
+                frequency=task.frequency,
+                deadline=next_deadline.strftime("%Y-%m-%d %H:%M"),
+                pet=task.pet
+            )
+
+            self.tasks.append(new_task)
