@@ -55,3 +55,13 @@ python -m pytest
 The tests verify key system behaviors, including correct task sorting by deadline, proper handling of recurring tasks when marking a task complete, and detection of scheduling conflicts. These tests help ensure that the scheduler behaves as expected under common scenarios.
 
 Confidence Level: ⭐⭐⭐⭐☆ (4/5) — The system is reliable based on the passing tests, with strong coverage of core scheduling functionality. However, additional edge case testing could further improve robustness.
+
+
+### Features
+Task Management: Add and organize pet care tasks with key attributes like duration, priority, and assigned pet.
+Time-Based Sorting: Tasks are automatically sorted by deadline using datetime parsing to ensure chronological order.
+Conflict Detection: The system checks for overlapping task deadlines and generates warnings to alert the user of scheduling conflicts.
+Constraint-Based Scheduling: The scheduler selects tasks that fit within the owner’s available time, prioritizing feasible daily plans.
+Priority Handling: Tasks are organized and considered based on priority levels (high, medium, low) to ensure important tasks are addressed first.
+Recurring Tasks: Supports daily and weekly task recurrence by automatically generating the next instance when a task is marked complete.
+Task Filtering: Tasks can be filtered by pet or completion status to help users manage and view relevant tasks easily.

@@ -35,6 +35,10 @@ I updated the design to include clearer relationships between classes. I added a
 - What constraints does your scheduler consider (for example: time, priority, preferences)?
 - How did you decide which constraints mattered most?
 
+My scheduler considers several constraints, including the owner’s available time, task duration, and task priority. It also accounts for deadlines by sorting tasks chronologically, and it ensures that tasks are only added to the daily plan if they fit within the remaining available time. Additionally, it supports task recurrence, which introduces timing constraints based on when tasks should repeat.
+
+I decided these constraints mattered most because they directly affect whether a schedule is feasible and realistic. Time and duration are the most critical since they determine what can actually fit into a day, while priority ensures that the most important tasks are completed first. Including deadlines and recurrence adds structure and helps the system behave more like a real-world scheduling assistant.
+
 **b. Tradeoffs**
 
 - Describe one tradeoff your scheduler makes.
@@ -50,10 +54,16 @@ One tradeoff the scheduler makes is that it only checks for exact time matches w
 - How did you use AI tools during this project (for example: design brainstorming, debugging, refactoring)?
 - What kinds of prompts or questions were most helpful?
 
+I used VS Code Copilot and ChatGPT to support different parts of the project, including designing the system structure, debugging errors, and improving my implementation. Copilot was especially helpful for writing boilerplate code and suggesting method implementations, while ChatGPT helped me reason through errors, refine my design decisions, and understand how different parts of the system should interact.
+
+The most helpful prompts were those that were specific and tied to my actual code, such as asking how to fix a particular error or how to structure a method to meet test requirements.
+
 **b. Judgment and verification**
 
 - Describe one moment where you did not accept an AI suggestion as-is.
 - How did you evaluate or verify what the AI suggested?
+
+There were times when I did not accept AI suggestions as-is. For example, when AI suggested combining scheduling logic inside the Task class, I chose to keep that logic in the Scheduler class instead to maintain a cleaner separation of responsibilities. I evaluated suggestions by comparing them against my system design, project requirements, and test cases to ensure they aligned with the intended architecture.
 
 ---
 
@@ -64,11 +74,14 @@ One tradeoff the scheduler makes is that it only checks for exact time matches w
 - What behaviors did you test?
 - Why were these tests important?
 
+I tested sorting correctness to ensure tasks are ordered by deadline, recurrence logic to verify that completing a task correctly creates a new future instance, and conflict detection to check that the system warns when tasks share the same deadline. These tests were important because they validate the core functionality of the scheduler, ensuring it produces reliable and predictable schedules.
+
 **b. Confidence**
 
 - How confident are you that your scheduler works correctly?
 - What edge cases would you test next if you had more time?
 
+I am moderately confident (around 4/5) that my scheduler works correctly. The tests cover the main behaviors, including scheduling, recurrence, and conflict detection, but there are still potential edge cases that are not fully tested. If I had more time, I would test overlapping time intervals, invalid input formats, multiple pets with competing constraints, and more complex scheduling scenarios to further improve robustness.
 ---
 
 ## 5. Reflection
@@ -77,10 +90,16 @@ One tradeoff the scheduler makes is that it only checks for exact time matches w
 
 - What part of this project are you most satisfied with?
 
+I am most satisfied with the overall structure of my system and how the classes interact. Separating responsibilities between Pet, Owner, Task, and Scheduler made the system easier to manage and extend. I also think the scheduling logic and recurrence feature were strong parts of the project.
+
 **b. What you would improve**
 
 - If you had another iteration, what would you improve or redesign?
 
+If I had another iteration, I would improve the conflict detection system to account for overlapping time ranges instead of only exact matches. I would also enhance the scheduling logic to better prioritize tasks using a more sophisticated algorithm rather than simple sorting. Additionally, I would improve the user interface to make the schedule display more interactive and visually clear.
+
 **c. Key takeaway**
 
 - What is one important thing you learned about designing systems or working with AI on this project?
+
+One important thing I learned is that designing a system requires careful planning of class responsibilities and relationships before writing code. Working with AI is most effective when I take the role of the lead architect—guiding the structure, evaluating suggestions critically, and ensuring that all components work together cohesively. AI is a powerful tool, but it works best when combined with clear system design and human oversight.

@@ -90,10 +90,16 @@ if st.button("Generate schedule"):
     else:
         scheduler = Scheduler(owner=st.session_state.owner, total_available_time=8)
         scheduler.tasks.extend(st.session_state.tasks)
+        scheduler.sort_by_time()
         scheduler.generate_plan()
-        st.write("Today's Schedule:")
-        for task_details in scheduler.get_daily_plan():
-            st.write(
-                f"- {task_details['name']} for {task_details['pet']} "
-                f"(Duration: {task_details['duration']} minutes, Priority: {task_details['priority']})"
-            )
+        scheduler.detect_conflicts()
+        st.warning("Conflict detection ran. Check logs for details if any conflicts exist.")
+        plan = scheduler.get_daily_plan()
+        if plan:
+            st.success("Schedule generated successfully!")
+
+            st.subheader("Today's Schedule")
+
+            st.table(plan)
+        else:
+            st.warning("No tasks could be scheduled within the available time.")
